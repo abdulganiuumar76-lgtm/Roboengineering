@@ -7,75 +7,268 @@
 <meta name="description" content="RoboEngineer — learn robotics, programming, electronics and build toward humanoid robotics. Created by Abdulganiu Umar Akorede.">
 <title>RoboEngineer — Robotics Learning Hub</title>
 <style>
-:root{--bg:#07111f;--panel:#0d1b2d;--panel2:#10253c;--text:#eef7ff;--muted:#9bb0c6;--blue:#27a7ff;--line:#203c58}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% 0%,#123a5a 0,#07111f 38%);color:var(--text);font-family:Arial,sans-serif;line-height:1.55}
-nav{position:sticky;top:0;z-index:10;background:#07111fee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:14px 6%;gap:20px}
-.logo{font-size:21px;font-weight:800}.logo span{color:var(--blue)}nav a{color:var(--muted);text-decoration:none;margin-left:18px}nav a:hover{color:white}
-.wrap{max-width:1100px;margin:auto;padding:0 6%}.hero{min-height:650px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:30px}.badge{display:inline-block;padding:7px 12px;border:1px solid #275478;border-radius:30px;color:#8dd2ff;background:#0b2034}
-h1{font-size:clamp(42px,7vw,76px);line-height:1.02;margin:18px 0}h2{font-size:34px;margin-top:0}h3{margin:8px 0}.blue{color:var(--blue)}.lead{font-size:19px;color:var(--muted);max-width:680px}
-.btn{display:inline-block;background:var(--blue);color:white;text-decoration:none;font-weight:700;padding:13px 18px;border-radius:11px;margin:10px 8px 0 0;border:0;cursor:pointer}.btn.alt{background:#142a40;border:1px solid #31506c}
-.robot{font-size:170px;text-align:center;filter:drop-shadow(0 20px 35px #0008);animation:float 3s ease-in-out infinite}@keyframes float{50%{transform:translateY(-14px)}}
-section{padding:85px 0;border-top:1px solid #14283c}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(145deg,var(--panel),#0a1726);border:1px solid var(--line);border-radius:18px;padding:22px}.card p{color:var(--muted)}
-.icon{font-size:34px}.progress{height:9px;background:#203147;border-radius:20px;overflow:hidden}.progress div{height:100%;width:35%;background:var(--blue)}
+:root{--bg:#07111f;--panel:#0d1b2d;--text:#eef7ff;--muted:#9bb0c6;--blue:#27a7ff;--line:#203c58;--ok:#1f9d55;--bad:#d45353}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 80% 0%,#123a5a 0,#07111f 38%);color:var(--text);font-family:Arial,sans-serif;line-height:1.55}
+nav{position:sticky;top:0;z-index:10;background:#07111fee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:14px 6%;gap:12px}
+.logo{font-size:21px;font-weight:800}.logo span{color:var(--blue)}
+nav a{color:var(--muted);text-decoration:none;margin-left:14px;font-size:15px}
+nav a:hover{color:white}
+.wrap{max-width:1100px;margin:auto;padding:0 6%}
+.hero{min-height:560px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:30px}
+.badge{display:inline-block;padding:7px 12px;border:1px solid #275478;border-radius:30px;color:#8dd2ff;background:#0b2034}
+h1{font-size:clamp(40px,7vw,72px);line-height:1.02;margin:18px 0}
+h2{font-size:32px;margin-top:0}h3{margin:8px 0}.blue{color:var(--blue)}
+.lead{font-size:18px;color:var(--muted);max-width:700px}
+.btn{display:inline-block;background:var(--blue);color:white;text-decoration:none;font-weight:700;padding:12px 16px;border-radius:11px;margin:10px 8px 0 0;border:0;cursor:pointer}
+.btn.alt{background:#142a40;border:1px solid #31506c}
+.robot{font-size:150px;text-align:center;filter:drop-shadow(0 20px 35px #0008);animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-14px)}}
+section{padding:72px 0;border-top:1px solid #14283c}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:linear-gradient(145deg,var(--panel),#0a1726);border:1px solid var(--line);border-radius:18px;padding:22px}
+.card p{color:var(--muted)}
+.icon{font-size:32px}
+.progress{height:10px;background:#203147;border-radius:20px;overflow:hidden}
+.progress div{height:100%;width:0;background:var(--blue);transition:width .3s}
 .code{background:#050c15;border:1px solid #1f3448;border-radius:14px;padding:18px;font-family:monospace;white-space:pre-wrap;color:#d9efff;overflow:auto}
-.quiz button{width:100%;text-align:left;margin:7px 0;padding:12px;border:1px solid #294762;background:#102238;color:white;border-radius:10px;cursor:pointer}
+.lesson{display:none;margin-top:16px}
+.lesson.open{display:block}
+.quiz button,.choice{width:100%;text-align:left;margin:7px 0;padding:12px;border:1px solid #294762;background:#102238;color:white;border-radius:10px;cursor:pointer}
+.ok{color:#8ee0b0}.bad{color:#ffb4b4}
+input,select{background:#102238;color:white;border:1px solid #294762;border-radius:10px;padding:10px;margin:6px 8px 6px 0}
 footer{padding:35px 6%;border-top:1px solid var(--line);color:var(--muted);text-align:center}
-@media(max-width:760px){nav div:last-child{display:none}.hero{grid-template-columns:1fr;min-height:auto;padding:70px 0}.robot{font-size:110px}.grid{grid-template-columns:1fr}section{padding:60px 0}}
+ol li,ul li{margin:6px 0}
+@media(max-width:760px){
+  nav div:last-child{display:none}
+  .hero{grid-template-columns:1fr;min-height:auto;padding:54px 0}
+  .robot{font-size:100px}
+  .grid{grid-template-columns:1fr}
+  section{padding:48px 0}
+}
 </style>
 </head>
 <body>
-<nav><div class="logo">🤖 Robo<span>Engineer</span></div><div>
-<a href="#learn">Learn</a><a href="#code">Code Lab</a><a href="#projects">Projects</a><a href="#quiz">Quiz</a>
-</div></nav>
+<nav>
+  <div class="logo">🤖 Robo<span>Engineer</span></div>
+  <div>
+    <a href="#learn">Learn</a>
+    <a href="#code">Code Lab</a>
+    <a href="#projects">Projects</a>
+    <a href="#quiz">Quiz</a>
+  </div>
+</nav>
 
 <header class="wrap hero">
-<div>
-<span class="badge">🚀 Robotics Engineering Learning Hub</span>
-<h1>Build the <span class="blue">future</span> with robots.</h1>
-<p class="lead">Learn robotics, physics, electronics and programming step by step — and work toward building advanced robots and humanoid robots.</p>
-<p><strong>Created & owned by Abdulganiu Umar Akorede</strong></p>
-<a class="btn" href="#learn">Start Learning</a><a class="btn alt" href="#projects">Explore Projects</a>
-</div>
-<div class="robot">🤖</div>
+  <div>
+    <span class="badge">🚀 Robotics Engineering Learning Hub</span>
+    <h1>Build the <span class="blue">future</span> with robots.</h1>
+    <p class="lead">Learn robotics, physics, electronics and programming step by step — then try a code lab, a quiz, and three build missions.</p>
+    <p><strong>Created & owned by Abdulganiu Umar Akorede</strong></p>
+    <a class="btn" href="#learn">Start Learning</a>
+    <a class="btn alt" href="#code">Open Code Lab</a>
+  </div>
+  <div class="robot">🤖</div>
 </header>
 
-<section id="learn"><div class="wrap"><h2>📚 Learn Robotics</h2><p class="lead">Build the foundation before moving to advanced robot engineering.</p>
-<div class="grid">
-<div class="card"><div class="icon">⚙️</div><h3>Robotics Basics</h3><p>Robots, sensors, actuators, controllers, motors and power systems.</p></div>
-<div class="card"><div class="icon">⚡</div><h3>Electronics</h3><p>Voltage, current, circuits, resistors, microcontrollers and sensors.</p></div>
-<div class="card"><div class="icon">🧠</div><h3>Programming</h3><p>Start with Python and progress toward C/C++ and robotics control.</p></div>
-<div class="card"><div class="icon">📐</div><h3>Physics</h3><p>Force, motion, torque, energy, electricity and mechanical systems.</p></div>
-<div class="card"><div class="icon">🦾</div><h3>Robot Mechanics</h3><p>Joints, gears, arms, wheels, balance and movement.</p></div>
-<div class="card"><div class="icon">🤖</div><h3>Humanoid Robotics</h3><p>Learn the technologies that combine to create human-like robots.</p></div>
-</div></div></section>
+<section id="learn">
+  <div class="wrap">
+    <h2>📚 Learn Robotics</h2>
+    <p class="lead">Open a lesson, read it, then mark it done. Your progress bar updates.</p>
+    <div class="grid" id="lessonGrid"></div>
+  </div>
+</section>
 
-<section id="code"><div class="wrap"><h2>💻 Code Lab</h2><p class="lead">A simple Python example showing how a robot can react to an obstacle.</p>
-<div class="code">distance = 15
+<section id="code">
+  <div class="wrap">
+    <h2>💻 Code Lab</h2>
+    <p class="lead">A robot reads distance. If something is closer than 20 cm, it turns. Otherwise it drives forward.</p>
+    <div class="code">distance = 15
 
-if distance &lt; 20:
+if distance < 20:
     print("Obstacle detected!")
     print("Turn left")
 else:
     print("Move forward")</div>
-<div class="card" style="margin-top:16px"><h3>Try the challenge</h3><p>If distance is <strong>30</strong>, what should the robot do?</p>
-<button class="btn" onclick="codeAnswer()">Check answer</button><p id="codeResult"></p></div></div></section>
+    <div class="card" style="margin-top:16px">
+      <h3>Try the simulator</h3>
+      <p>Type a distance in centimeters, then run the robot brain.</p>
+      <label>Distance <input id="dist" type="number" value="15" min="0" max="400"></label>
+      <button class="btn" onclick="runLab()">Run</button>
+      <p id="labResult">Waiting for a distance...</p>
+      <p>Challenge: set distance to <strong>30</strong>. The robot should move forward, because 30 is not less than 20.</p>
+    </div>
+  </div>
+</section>
 
-<section id="projects"><div class="wrap"><h2>🔧 Project Missions</h2><div class="grid">
-<div class="card"><div class="icon">🚗</div><h3>Obstacle-Avoiding Robot</h3><p>Use motors and an ultrasonic sensor to detect obstacles and change direction.</p></div>
-<div class="card"><div class="icon">🦾</div><h3>Robotic Arm</h3><p>Explore servo motors, joints and controlled movement.</p></div>
-<div class="card"><div class="icon">🤖</div><h3>Humanoid Robot</h3><p>A long-term mission combining mechanics, electronics, programming, control and AI.</p></div>
-</div></div></section>
+<section id="projects">
+  <div class="wrap">
+    <h2>🔧 Project Missions</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🚗</div>
+        <h3>1. Obstacle-Avoiding Robot</h3>
+        <p>Parts: two motors, a motor driver, an ultrasonic sensor, and a controller board.</p>
+        <ol>
+          <li>Wire the sensor and motors.</li>
+          <li>Read distance.</li>
+          <li>Drive forward if the path is clear.</li>
+          <li>Stop and turn if distance is under 20 cm.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <div class="icon">🦾</div>
+        <h3>2. Robotic Arm</h3>
+        <p>Parts: two or three servo motors and a light arm.</p>
+        <ol>
+          <li>One servo is the base.</li>
+          <li>One servo is the elbow.</li>
+          <li>Move one joint at a time.</li>
+          <li>Write down each angle you use.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <div class="icon">🤖</div>
+        <h3>3. Humanoid Robot</h3>
+        <p>A long mission. Start only after missions 1 and 2.</p>
+        <ol>
+          <li>Balance on two legs.</li>
+          <li>Add sensors so it knows it is tipping.</li>
+          <li>Program small steps.</li>
+          <li>Add a simple task, like waving.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section id="quiz"><div class="wrap"><h2>🧠 Robotics Quiz</h2><div class="card quiz">
-<h3>Which component helps a robot detect its environment?</h3>
-<button onclick="quiz(true)">A. Sensor</button><button onclick="quiz(false)">B. Battery</button><button onclick="quiz(false)">C. Wheel</button><button onclick="quiz(false)">D. Chassis</button>
-<p id="quizResult"></p></div></div></section>
+<section id="quiz">
+  <div class="wrap">
+    <h2>🧠 Robotics Quiz</h2>
+    <div class="card quiz">
+      <p id="qCount">Question 1 of 5</p>
+      <h3 id="qText"></h3>
+      <div id="qChoices"></div>
+      <p id="qFeedback"></p>
+      <button class="btn" id="nextBtn" onclick="nextQuestion()" style="display:none">Next</button>
+    </div>
+  </div>
+</section>
 
-<section><div class="wrap"><div class="card"><h2>📈 Your Robotics Journey</h2><p>Foundation progress</p><div class="progress"><div></div></div><p>35% complete — keep learning and building!</p></div></div></section>
+<section>
+  <div class="wrap">
+    <div class="card">
+      <h2>📈 Your Robotics Journey</h2>
+      <p id="progressLabel">0 of 6 lessons done</p>
+      <div class="progress"><div id="bar"></div></div>
+      <p id="progressNote">Open a lesson and mark it done.</p>
+      <button class="btn alt" onclick="resetProgress()">Reset progress</button>
+    </div>
+  </div>
+</section>
 
-<footer>© 2026 RoboEngineer · Owner: Abdulganiu Umar Akorede · Built for the future of robotics.</footer>
+<footer>© 2026 RoboEngineer · Owner: Abdulganiu Umar Akorede · Built for learning robotics.</footer>
+
 <script>
-function codeAnswer(){document.getElementById('codeResult').textContent='✅ Correct! At 30, the robot should move forward.'}
-function quiz(ok){document.getElementById('quizResult').textContent=ok?'🎉 Correct! A sensor detects information about the environment.':'❌ Try again. Think about what detects the environment.'}
+const lessons = [
+  {id:"basics", icon:"⚙️", title:"Robotics Basics", text:"A robot repeats three jobs: sense, think, and act. A sensor senses. The controller thinks. A motor or light acts. Power comes from a battery or a cable."},
+  {id:"electronics", icon:"⚡", title:"Electronics", text:"Voltage pushes electricity. Current is the flow. A circuit must be a closed loop. A resistor limits current. Never connect a battery straight across a motor pin without a driver board."},
+  {id:"programming", icon:"🧠", title:"Programming", text:"Code is the robot's instructions. Python is a good start. An if statement chooses an action. A loop repeats the check. Later, C++ is common on Arduino boards."},
+  {id:"physics", icon:"📐", title:"Physics", text:"Force changes motion. Torque turns a wheel or a joint. Friction can help a wheel grip, or slow a sliding part. Energy moves from the battery into motion and a little heat."},
+  {id:"mechanics", icon:"🦾", title:"Robot Mechanics", text:"Joints bend. Gears change speed and strength. Wheels are simple and stable. Legs are harder because the robot must balance. Start with wheels."},
+  {id:"humanoid", icon:"🤖", title:"Humanoid Robotics", text:"A humanoid robot combines many systems: joints, balance sensors, motors, and control code. Build small skills first. A waving arm is a better first goal than a walking person-shaped robot."}
+];
+
+const questions = [
+  {q:"Which part helps a robot detect its environment?", choices:["Sensor","Battery","Wheel","Chassis"], answer:0, why:"A sensor measures something, such as distance or light."},
+  {q:"What should the robot do if distance is 30 and the limit is 20?", choices:["Turn left","Move forward","Shut down","Spin forever"], answer:1, why:"30 is not less than 20, so the path is clear."},
+  {q:"Which board part makes the decision?", choices:["Sensor","Controller","Wheel","Wire"], answer:1, why:"The controller runs the program and chooses the action."},
+  {q:"What does a motor do?", choices:["Creates motion","Measures light","Stores code","Displays text"], answer:0, why:"A motor is an actuator. It turns electricity into motion."},
+  {q:"Why start with a wheeled robot?", choices:["Wheels are easier to balance","Legs use no power","Wheels cannot turn","Sensors do not work on wheels"], answer:0, why:"Wheels stay upright more easily, so you can learn sensing and control first."}
+];
+
+let done = JSON.parse(localStorage.getItem("robo-done") || "{}");
+let qIndex = 0;
+let locked = false;
+
+function renderLessons(){
+  const grid = document.getElementById("lessonGrid");
+  grid.innerHTML = lessons.map(lesson => `
+    <div class="card">
+      <div class="icon">${lesson.icon}</div>
+      <h3>${lesson.title}</h3>
+      <p>${lesson.text.slice(0,72)}...</p>
+      <button class="btn alt" onclick="toggleLesson('${lesson.id}')">Open lesson</button>
+      <div class="lesson" id="lesson-${lesson.id}">
+        <p>${lesson.text}</p>
+        <button class="btn" onclick="markDone('${lesson.id}')">${done[lesson.id] ? "Done" : "Mark done"}</button>
+      </div>
+    </div>`).join("");
+  updateProgress();
+}
+function toggleLesson(id){
+  document.getElementById("lesson-" + id).classList.toggle("open");
+}
+function markDone(id){
+  done[id] = true;
+  localStorage.setItem("robo-done", JSON.stringify(done));
+  renderLessons();
+  document.getElementById("lesson-" + id).classList.add("open");
+}
+function updateProgress(){
+  const count = lessons.filter(lesson => done[lesson.id]).length;
+  const pct = Math.round(count / lessons.length * 100);
+  document.getElementById("bar").style.width = pct + "%";
+  document.getElementById("progressLabel").textContent = count + " of " + lessons.length + " lessons done";
+  document.getElementById("progressNote").textContent = pct === 100 ? "All lessons done. Try the quiz." : pct + "% complete — keep learning and building!";
+}
+function resetProgress(){
+  done = {};
+  localStorage.removeItem("robo-done");
+  renderLessons();
+}
+function runLab(){
+  const distance = Number(document.getElementById("dist").value);
+  const out = document.getElementById("labResult");
+  if(Number.isNaN(distance) || distance < 0){
+    out.textContent = "Type a distance of 0 or more.";
+    return;
+  }
+  if(distance < 20){
+    out.innerHTML = "<span class='bad'>Obstacle detected. Turn left.</span> " + distance + " cm is closer than 20 cm.";
+  }else{
+    out.innerHTML = "<span class='ok'>Move forward.</span> " + distance + " cm is a clear path.";
+  }
+}
+function showQuestion(){
+  const item = questions[qIndex];
+  locked = false;
+  document.getElementById("qCount").textContent = "Question " + (qIndex + 1) + " of " + questions.length;
+  document.getElementById("qText").textContent = item.q;
+  document.getElementById("qFeedback").textContent = "";
+  document.getElementById("nextBtn").style.display = "none";
+  document.getElementById("qChoices").innerHTML = item.choices.map((choice, i) =>
+    `<button class="choice" onclick="pick(${i})">${String.fromCharCode(65+i)}. ${choice}</button>`
+  ).join("");
+}
+function pick(i){
+  if(locked) return;
+  locked = true;
+  const item = questions[i === undefined ? 0 : qIndex];
+  const ok = i === item.answer;
+  document.getElementById("qFeedback").innerHTML = ok
+    ? "<span class='ok'>Correct.</span> " + item.why
+    : "<span class='bad'>Not quite.</span> " + item.why;
+  document.getElementById("nextBtn").style.display = "inline-block";
+  document.getElementById("nextBtn").textContent = qIndex === questions.length - 1 ? "Restart quiz" : "Next";
+}
+function nextQuestion(){
+  qIndex = qIndex === questions.length - 1 ? 0 : qIndex + 1;
+  showQuestion();
+}
+renderLessons();
+showQuestion();
 </script>
-</body></html>
+</body>
+</html>

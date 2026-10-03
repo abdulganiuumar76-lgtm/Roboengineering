@@ -13,6 +13,7 @@ header{padding:22px 18px 8px;font-size:32px;font-weight:700}
 .banner{position:relative;height:180px;border-radius:22px;overflow:hidden;background:#111 center/cover no-repeat}
 .banner img{width:100%;height:100%;object-fit:cover;display:block}
 .banner span{position:absolute;left:16px;bottom:16px;color:#ffe14a;font-weight:900;font-size:28px;line-height:1;text-shadow:0 2px 8px #000a}
+.student{font-weight:800;color:#241b4a;font-size:18px;margin:12px 0 4px}
 .card{border-radius:22px;padding:16px;margin:14px 0;display:flex;gap:12px;align-items:center}
 .card img{width:74px;height:74px;object-fit:cover;border-radius:16px}
 .num{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#efe7ff;color:#6d4aff;font-weight:800}
@@ -36,6 +37,7 @@ input{width:100%;border:1px solid #e4daf8;border-radius:12px;padding:10px;margin
 <main class="wrap">
 <section id="home" class="screen on">
  <div class="banner"><img src="banner.jpg" alt="Student in class"><span>HIGH HOPE<br>OF SUCCESS</span></div>
+ <p class="student" id="hello">Student</p>
  <button class="plain" onclick="openLesson(0)"><div class="card" style="background:#f3e9ff"><div class="num">1</div><div><h2>Robot Systems</h2><p>Learn sense, think, act, and robot states.</p></div></div></button>
  <button class="plain" onclick="openLesson(1)"><div class="card" style="background:#e5f6ff"><img src="circuit.jpg" alt="Circuit"><div><h2>Electronics</h2><p>Voltage, circuits, and safe wiring.</p></div></div></button>
  <div class="grid">
@@ -53,7 +55,7 @@ input{width:100%;border:1px solid #e4daf8;border-radius:12px;padding:10px;margin
  <div class="card" style="background:#fff;display:block"><h2 id="qText"></h2><div id="choices"></div><p id="qOut"></p><p id="score"></p></div>
 </section>
 <section id="settings" class="screen">
- <div class="card" style="background:#fff;display:block"><h2>Settings</h2><p>Created by Abdulganiu Umar Akorede.</p><input id="name" placeholder="Your name"><button class="back" onclick="saveName()">Save</button><p id="saved"></p></div>
+ <div class="card" style="background:#fff;display:block"><h2>Settings</h2><p>Created by <b>Abdulganiu Umar Akorede</b>.</p><input id="name" placeholder="Your name"><button class="back" onclick="saveName()">Save</button><p id="saved"></p></div>
 </section>
 </main>
 <nav>
@@ -76,7 +78,9 @@ let qi=0,score=0,asked=0,locked=false;
 function show(id,btn,title){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');document.getElementById('title').textContent=title||'Home';if(btn){document.querySelectorAll('nav button').forEach(b=>b.classList.remove('on'));btn.classList.add('on')}}
 function openLesson(i){document.getElementById('lessonBody').innerHTML='<div class="card" style="background:#fff;display:block"><h2>'+lessons[i].t+'</h2><p>'+lessons[i].body+'</p></div>';show('lesson',null,lessons[i].t);localStorage.setItem('rs-points',String(Number(localStorage.getItem('rs-points')||0)+5));document.getElementById('rankText').textContent='Study points: '+(localStorage.getItem('rs-points')||0)}
 function runLab(){const d=Number(document.getElementById('dist').value);document.getElementById('labOut').innerHTML=d<20?'<span class="bad">Turn left.</span>':'<span class="ok">Move forward.</span>'}
-function saveName(){localStorage.setItem('rs-name',document.getElementById('name').value);document.getElementById('saved').textContent='Saved on this phone.'}
+function saveName(){localStorage.setItem('rs-name',document.getElementById('name').value);document.getElementById('saved').innerHTML='Saved, <b>'+document.getElementById('name').value+'</b>.';paintName()}
+function paintName(){const n=localStorage.getItem('rs-name')||'Student';document.getElementById('hello').innerHTML='<b>'+n+'</b>'}
+paintName();
 function showQ(){const item=qs[qi];locked=false;document.getElementById('qText').textContent=item.q;document.getElementById('qOut').textContent='';document.getElementById('choices').innerHTML=item.c.map((c,i)=>'<button class="back" onclick="pick('+i+')">'+c+'</button> ').join('');document.getElementById('score').textContent='Score '+score+' / '+asked}
 function pick(i){if(locked)return;locked=true;asked++;if(i===qs[qi].a)score++;document.getElementById('qOut').innerHTML=i===qs[qi].a?'<span class="ok">Correct.</span>':'<span class="bad">Not quite.</span>';document.getElementById('score').textContent='Score '+score+' / '+asked;setTimeout(()=>{qi=(qi+1)%qs.length;if(qi===0){score=0;asked=0}showQ()},700)}
 document.getElementById('rankText').textContent='Study points: '+(localStorage.getItem('rs-points')||0);

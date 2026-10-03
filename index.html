@@ -8,7 +8,10 @@
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#f6f1fb;color:#1d2433;font-family:Arial,sans-serif}
-header{padding:22px 18px 8px;font-size:32px;font-weight:700}
+header{padding:16px 18px 8px}
+.welcome{margin:0;font-size:15px;color:#6d4aff;font-weight:500}
+.welcome b{font-size:22px;color:#241b4a}
+#title{font-size:28px;font-weight:700;margin-top:2px}
 .wrap{padding:8px 16px 96px}
 .banner{position:relative;height:180px;border-radius:22px;overflow:hidden;background:#111 center/cover no-repeat}
 .banner img{width:100%;height:100%;object-fit:cover;display:block}
@@ -33,11 +36,13 @@ input{width:100%;border:1px solid #e4daf8;border-radius:12px;padding:10px;margin
 </style>
 </head>
 <body>
-<header id="title">Home</header>
+<header>
+ <p class="welcome">Welcome, <b>Engineer Umar</b></p>
+ <div id="title">Home</div>
+</header>
 <main class="wrap">
 <section id="home" class="screen on">
  <div class="banner"><img src="banner.jpg" alt="Student in class"><span>HIGH HOPE<br>OF SUCCESS</span></div>
- <p class="student" id="hello">Student</p>
  <button class="plain" onclick="openLesson(0)"><div class="card" style="background:#f3e9ff"><div class="num">1</div><div><h2>Robot Systems</h2><p>Learn sense, think, act, and robot states.</p></div></div></button>
  <button class="plain" onclick="openLesson(1)"><div class="card" style="background:#e5f6ff"><img src="circuit.jpg" alt="Circuit"><div><h2>Electronics</h2><p>Voltage, circuits, and safe wiring.</p></div></div></button>
  <div class="grid">
@@ -67,20 +72,53 @@ input{width:100%;border:1px solid #e4daf8;border-radius:12px;padding:10px;margin
 </nav>
 <script>
 const lessons=[
- {t:'Robot Systems',body:'A robot senses, thinks, and acts. Use one state at a time: Search, Approach, Avoid, or Stop. A stop button must cut the motors.'},
- {t:'Electronics',body:'Voltage pushes current. A circuit must be closed. Use a motor driver for wheels. Never connect a motor straight to a controller pin. Ask an adult before using a battery pack.'},
- {t:'Code Lab',body:'If distance is under 20, turn left. Otherwise move forward. Test 15, then test 30.'},
- {t:'Robot Arm',body:'Save poses. Home is 90 and 40. Reach is 90 and 110. Wave is 140 and 40. Move one joint, wait, then move the next.'},
- {t:'Build Missions',body:'First build a wheeled avoid robot. Then add an arm and a wave. A supported stand comes before any free step.'}
+ {t:'Robot Systems',notes:[
+  ['What a robot is','A robot senses the world, decides, and acts. A toy that only rolls when you switch it on is a machine. A robot uses a reading to choose the next move.'],
+  ['Sense, think, act','Sense: a sensor measures distance, light, or touch. Think: the controller runs your program. Act: a motor, servo, or light does the job. Then the loop starts again.'],
+  ['Main parts','You need a frame, a power source, a controller, sensors, and actuators. The program is also a part. If one part is missing, the behavior fails.'],
+  ['States','Use one state at a time: Search, Approach, Avoid, or Stop. Search means the path is clear. Avoid means something is closer than 20 cm. Stop cuts the motors.'],
+  ['Worked example','The sensor reads 15 cm. The program compares 15 with 20. Because 15 is smaller, the state becomes Avoid, the wheels stop, and one wheel reverses for a short turn.'],
+  ['Class note','Write the pin for every part before you build. Unplug power before you move a wire. Keep fingers away from spinning wheels.']
+ ]},
+ {t:'Electronics',notes:[
+  ['Voltage, current, resistance','Voltage is the push, in volts. Current is the flow. Resistance slows that flow. A resistor protects a small part such as an LED.'],
+  ['Closed circuit','Electricity must leave the supply, pass through the parts, and return. If one wire is open, the part stays off. Positive is often red. Ground is the return path.'],
+  ['Signal and power','A controller pin makes a small HIGH or LOW signal. A motor needs more current. A driver board switches battery power from that small signal. Do not power a motor from a controller pin.'],
+  ['Common parts','An LED shows that a pin is on. A button is a simple input. An ultrasonic sensor measures distance. A servo moves to an angle and holds it.'],
+  ['Wiring example','TRIG can go to pin 9 and ECHO to pin 10. Both must share ground with the controller. The motor driver takes battery power and two direction pins for each wheel.'],
+  ['Safety','Match the battery voltage to the board. Never join positive straight to negative. Ask an adult before you use a battery pack.']
+ ]},
+ {t:'Code Lab',notes:[
+  ['Instructions in order','The controller reads from top to bottom. A variable stores a number. An if statement chooses an action. A loop repeats the check.'],
+  ['The distance rule','If distance is under 20, print obstacle and turn left. Otherwise move forward. At 15 the robot turns. At 30 it drives forward.'],
+  ['Try three values','Before you run, write the expected action for 8, 20, and 40. Then compare. If the action is wrong, check the test, not the wheels first.'],
+  ['Loops','A robot must read again and again. On Arduino, loop repeats by itself. In Python, while True repeats until you stop the program.'],
+  ['Finding mistakes','Change one line, then test. If the number is right but the wheels do not move, check the motor pins. Comments at the top should name every pin.'],
+  ['Practice','Set the limit at 20. Explain in your own words why 20 itself moves forward if the test is distance less than 20.']
+ ]},
+ {t:'Robot Arm',notes:[
+  ['Joint angles','An arm is controlled by angles. A two-servo arm has a base angle and an elbow angle. Command angles you measured, not angles you only imagined.'],
+  ['Saved poses','Home can be 90 and 40. Reach can be 90 and 110. Wave can be 140 and 40 on the shoulder. A pose is a saved pair of angles.'],
+  ['One joint at a time','Move the elbow, wait until it arrives, then move the base. If both jump together, you cannot tell which joint failed.'],
+  ['A wave','Shoulder to 40, wait, shoulder to 140, wait, shoulder back to 40. That is a complete humanoid-style action.'],
+  ['A pick mission','Start at home, move to reach, pause, then return home. Write each angle in a table before you call it a finished mission.'],
+  ['Safety','Do not force a servo past its stop. A blocked servo can get hot. Stop the test and let it cool.']
+ ]},
+ {t:'Build Missions',notes:[
+  ['Mission 1: avoid robot','Use two motors, a driver, an ultrasonic sensor, and a controller. Drive forward if distance is 20 cm or more. Stop and turn if it is under 20 cm.'],
+  ['Mission 2: arm','Add two servos. Save home, reach, and wave. Move one joint at a time and record the angles that work.'],
+  ['Mission 3: humanoid plan','A humanoid robot joins frame, motors, balance sensing, power, and small moves. It is a long goal. The wheeled robot and the arm come first.'],
+  ['Balance','If the center of mass leaves the feet, the robot tips. A heavy battery should sit low. A supported stand comes before a free step.'],
+  ['Build order','Frame rolls by hand. One motor spins. Both motors drive straight. The robot can turn. Only then add the sensor. Later add the arm and the wave.'],
+  ['Engineering habit','Test one change. Write the result. A working wave is a better first result than a robot that falls.']
+ ]}
 ];
 const qs=[{q:'A robot should run how many states at once?',c:['One','Five'],a:0},{q:'Under 20 cm, the robot should?',c:['Turn','Ignore it'],a:0},{q:'A good first arm action is?',c:['A wave','A jump'],a:0}];
 let qi=0,score=0,asked=0,locked=false;
 function show(id,btn,title){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');document.getElementById('title').textContent=title||'Home';if(btn){document.querySelectorAll('nav button').forEach(b=>b.classList.remove('on'));btn.classList.add('on')}}
-function openLesson(i){document.getElementById('lessonBody').innerHTML='<div class="card" style="background:#fff;display:block"><h2>'+lessons[i].t+'</h2><p>'+lessons[i].body+'</p></div>';show('lesson',null,lessons[i].t);localStorage.setItem('rs-points',String(Number(localStorage.getItem('rs-points')||0)+5));document.getElementById('rankText').textContent='Study points: '+(localStorage.getItem('rs-points')||0)}
+function openLesson(i){const notes=lessons[i].notes.map(n=>'<h3>'+n[0]+'</h3><p>'+n[1]+'</p>').join('');document.getElementById('lessonBody').innerHTML='<div class="card" style="background:#fff;display:block"><h2>'+lessons[i].t+'</h2>'+notes+'</div>';show('lesson',null,lessons[i].t);localStorage.setItem('rs-points',String(Number(localStorage.getItem('rs-points')||0)+5));document.getElementById('rankText').textContent='Study points: '+(localStorage.getItem('rs-points')||0)}
 function runLab(){const d=Number(document.getElementById('dist').value);document.getElementById('labOut').innerHTML=d<20?'<span class="bad">Turn left.</span>':'<span class="ok">Move forward.</span>'}
-function saveName(){localStorage.setItem('rs-name',document.getElementById('name').value);document.getElementById('saved').innerHTML='Saved, <b>'+document.getElementById('name').value+'</b>.';paintName()}
-function paintName(){const n=localStorage.getItem('rs-name')||'Student';document.getElementById('hello').innerHTML='<b>'+n+'</b>'}
-paintName();
+function saveName(){localStorage.setItem('rs-name',document.getElementById('name').value);document.getElementById('saved').innerHTML='Saved. The top name stays <b>Engineer Umar</b>.'}
 function showQ(){const item=qs[qi];locked=false;document.getElementById('qText').textContent=item.q;document.getElementById('qOut').textContent='';document.getElementById('choices').innerHTML=item.c.map((c,i)=>'<button class="back" onclick="pick('+i+')">'+c+'</button> ').join('');document.getElementById('score').textContent='Score '+score+' / '+asked}
 function pick(i){if(locked)return;locked=true;asked++;if(i===qs[qi].a)score++;document.getElementById('qOut').innerHTML=i===qs[qi].a?'<span class="ok">Correct.</span>':'<span class="bad">Not quite.</span>';document.getElementById('score').textContent='Score '+score+' / '+asked;setTimeout(()=>{qi=(qi+1)%qs.length;if(qi===0){score=0;asked=0}showQ()},700)}
 document.getElementById('rankText').textContent='Study points: '+(localStorage.getItem('rs-points')||0);

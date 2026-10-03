@@ -3,258 +3,214 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#07111f">
-<meta name="description" content="RoboEngineer advanced robotics course by Abdulganiu Umar Akorede.">
-<title>RoboEngineer — Advanced Course</title>
+<meta name="theme-color" content="#0b1c33">
+<meta name="description" content="RoboEngineer School — advanced robotics course by Abdulganiu Umar Akorede.">
+<title>RoboEngineer School</title>
 <style>
-:root{--bg:#07111f;--panel:#0e1c31;--panel2:#12263f;--text:#eef6ff;--muted:#9eb4c9;--blue:#3aa0ff;--line:#23425f;--ok:#7ddea8;--warn:#e6b15c}
+:root{--bg:#07111f;--card:#102033;--text:#eef5ff;--muted:#9eb3c9;--blue:#2f8cff;--line:#243c58;--ok:#6ddeaf}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;color:var(--text);font-family:Georgia,serif;background:radial-gradient(900px 400px at 90% -10%,#1a4d78 0,transparent 50%),linear-gradient(#07111f,#0a1728 40%,#07111f)}
-nav{position:sticky;top:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:12px 5%;background:#07111fee;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
-.logo{font-family:Arial,sans-serif;font-weight:800;letter-spacing:.3px}.logo span{color:var(--blue)}
-.menu-btn{display:none;font-family:Arial,sans-serif;background:#14304c;color:#fff;border:1px solid #376084;border-radius:10px;padding:8px 12px;font-weight:700}
-#links{display:flex;gap:16px;font-family:Arial,sans-serif}#links a{color:var(--muted);text-decoration:none}
-.wrap{max-width:980px;margin:auto;padding:0 5% 48px}
-.hero{padding:48px 0 12px}
-.kicker{font-family:Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8ec8ff;font-size:12px}
-h1{font-size:clamp(34px,6vw,62px);line-height:1.02;margin:10px 0 12px}
-h2{font-family:Arial,sans-serif;font-size:26px;margin:6px 0}
-h3{font-family:Arial,sans-serif;color:#d7ebff;margin:18px 0 6px}
-.lead,p,li{color:var(--muted);font-size:17px}
-.card{background:linear-gradient(180deg,var(--panel),#0b1828);border:1px solid var(--line);border-radius:20px;padding:20px;margin:16px 0;box-shadow:0 16px 40px #0004}
-.toc a{display:flex;justify-content:space-between;gap:12px;color:#d7ecff;text-decoration:none;padding:10px 0;border-bottom:1px solid #1d3852;font-family:Arial,sans-serif}
-.tag{color:var(--blue);font-size:13px}
-.note,.labbox{background:#10283f;border-left:4px solid var(--blue);padding:12px 14px;border-radius:10px;margin:12px 0}
-.warn{background:#2c2114;border-left:4px solid var(--warn);padding:12px 14px;border-radius:10px;margin:12px 0}
-.code{font-family:Consolas,monospace;background:#061018;color:#d7f0ff;border:1px solid #1d3b56;border-radius:12px;padding:12px;white-space:pre-wrap}
-button,input,select{font-family:Arial,sans-serif}
-.btn{background:var(--blue);color:#fff;border:0;border-radius:11px;padding:10px 14px;font-weight:700;margin:8px 8px 0 0;cursor:pointer}
-.btn.alt{background:#14304c;border:1px solid #376084}
-input{width:100%;max-width:280px;background:#102238;color:#fff;border:1px solid #31597a;border-radius:10px;padding:10px}
-.ok{color:var(--ok)}.bad{color:#ffb4b4}
-.progress{height:10px;background:#203247;border-radius:20px;overflow:hidden}.progress div{height:100%;width:0;background:var(--blue)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-footer{text-align:center;color:var(--muted);padding:20px;font-family:Arial,sans-serif}
-@media(max-width:760px){
- .menu-btn{display:block}
- #links{display:none;position:absolute;top:54px;left:0;right:0;background:#07111f;flex-direction:column;padding:12px 5%;border-bottom:1px solid var(--line)}
- #links.open{display:flex}
- .grid{grid-template-columns:1fr}
-}
+body{margin:0;background:#07111f;color:var(--text);font-family:Arial,sans-serif}
+header{position:sticky;top:0;z-index:5;background:#0b1c33;border-bottom:1px solid var(--line);padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+.brand{font-weight:800}.brand span{color:#69b2ff}
+.wrap{max-width:860px;margin:auto;padding:16px 14px 92px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0}
+h1{font-size:28px;margin:8px 0}h2{font-size:22px;margin:6px 0}h3{margin:14px 0 6px}
+p,li{color:var(--muted);line-height:1.55}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.stat{flex:1;min-width:120px;background:#0c1a2c;border:1px solid var(--line);border-radius:14px;padding:12px}
+.stat b{display:block;color:white;font-size:22px}
+button,input{font:inherit}
+.btn{background:var(--blue);color:white;border:0;border-radius:12px;padding:10px 14px;font-weight:700;margin:6px 6px 0 0}
+.btn.alt{background:#17304a}
+.mod{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #1d334c}
+.bar{height:8px;background:#24384f;border-radius:10px;overflow:hidden;margin-top:6px}.bar div{height:100%;background:var(--blue)}
+.note{background:#123049;border-left:4px solid var(--blue);padding:10px;border-radius:8px;color:#d7e9ff}
+.warn{background:#2b2416;border-left:4px solid #e2b15c;padding:10px;border-radius:8px;color:#f4e6cc}
+.code{background:#071018;color:#d7f3ff;border-radius:10px;padding:10px;font-family:Consolas,monospace;white-space:pre-wrap}
+.screen{display:none}.screen.on{display:block}
+nav.bottom{position:fixed;left:0;right:0;bottom:0;display:flex;background:#0b1c33;border-top:1px solid var(--line)}
+nav.bottom button{flex:1;background:transparent;color:#9eb3c9;border:0;padding:12px 4px;font-size:12px}
+nav.bottom button.on{color:white;font-weight:700}
+.ok{color:var(--ok)}.bad{color:#ffb0b0}
+input{background:#0c1a2c;color:white;border:1px solid #31597a;border-radius:10px;padding:10px;width:100%;max-width:320px}
 </style>
 </head>
 <body>
-<nav>
- <div class="logo">🤖 Robo<span>Engineer</span> Advanced</div>
- <button class="menu-btn" onclick="document.getElementById('links').classList.toggle('open')">Menu</button>
- <div id="links">
-  <a href="#map" onclick="closeMenu()">Map</a>
-  <a href="#l1" onclick="closeMenu()">Lessons</a>
-  <a href="#lab" onclick="closeMenu()">Lab</a>
-  <a href="#quiz" onclick="closeMenu()">Quiz</a>
- </div>
-</nav>
-<header class="wrap hero">
- <div class="kicker">Advanced learning track</div>
- <h1>Design, sense, decide, and move.</h1>
- <p class="lead">A longer robotics course by Abdulganiu Umar Akorede. Each lesson has several topics, a worked case, and a check. The level is past a first demo: control, sensing, mechanics, and a humanoid plan.</p>
-</header>
+<header><div class="brand">Robo<span>School</span></div><div id="who">Student</div></header>
 <main class="wrap">
-<section class="card" id="map">
- <h2>Course map</h2>
- <div class="toc">
-  <a href="#l1"><span>1. Robot systems</span><span class="tag">architecture</span></a>
-  <a href="#l2"><span>2. Sensing and signals</span><span class="tag">measurement</span></a>
-  <a href="#l3"><span>3. Control decisions</span><span class="tag">logic</span></a>
-  <a href="#l4"><span>4. Motion and mechanics</span><span class="tag">physics</span></a>
-  <a href="#l5"><span>5. Arms and position</span><span class="tag">joints</span></a>
-  <a href="#l6"><span>6. Humanoid plan</span><span class="tag">integration</span></a>
+<section id="home" class="screen on">
+ <p>Advanced robotics school</p>
+ <h1>Good day, engineer.</h1>
+ <div class="row">
+  <div class="stat"><b id="doneCount">0/6</b>modules done</div>
+  <div class="stat"><b id="grade">—</b>quiz grade</div>
+  <div class="stat"><b id="xp">0</b>study points</div>
+ </div>
+ <div class="card">
+  <h2>Continue learning</h2>
+  <p id="nextText">Start with Robot Systems.</p>
+  <button class="btn" onclick="openNext()">Continue</button>
+ </div>
+ <div class="card">
+  <h2>Course: Robotics Engineering</h2>
+  <p>Teacher app by Abdulganiu Umar Akorede. Six advanced modules, a lab, and a graded quiz.</p>
+  <div class="bar"><div id="homeBar"></div></div>
  </div>
 </section>
 
-<article class="card" id="l1">
- <h2>1. Robot systems</h2>
- <h3>Topic: A robot is a system</h3>
- <p>An advanced robot is not one motor. It is a system of power, sensing, computing, and motion. If one block fails, the whole behavior fails. Engineers name the blocks before they build.</p>
- <h3>Topic: The control loop</h3>
- <p>The loop is read, estimate, decide, command, then read again. A beginner robot may only compare distance with 20 cm. An advanced robot also remembers the last command so it does not jitter between turn and forward.</p>
- <h3>Topic: States</h3>
- <p>Give the robot named states: Search, Approach, Avoid, Stop. It can be in only one state at a time. A sensor event moves it to the next state. This is clearer than a long chain of if statements.</p>
- <div class="code">state = "Search"
-if distance < 20:
-    state = "Avoid"
-elif distance < 40:
-    state = "Approach"
-else:
-    state = "Search"</div>
- <div class="note"><strong>Case.</strong> A delivery robot searches until a wall is near, switches to Avoid, turns until the path is clear, then returns to Search. The state name is what you print when you test.</div>
- <div class="warn">Safety: add a Stop state that cuts motor commands if a button is pressed or a sensor reading is impossible.</div>
- <p>Check: what should a robot be in, one at a time?</p>
- <input id="a1" placeholder="Type state">
- <button class="btn" onclick="check('a1','state','r1')">Check</button><p id="r1"></p>
- <button class="btn alt" onclick="mark('l1')">Mark lesson done</button>
-</article>
+<section id="modules" class="screen">
+ <h1>Modules</h1>
+ <div class="card" id="modList"></div>
+</section>
 
-<article class="card" id="l2">
- <h2>2. Sensing and signals</h2>
- <h3>Topic: A reading is not the world</h3>
- <p>A sensor reports a number. That number can be late, noisy, or wrong. Advanced work asks: what was measured, in what unit, and what reading is impossible?</p>
- <h3>Topic: Ultrasonic distance</h3>
- <p>An ultrasonic sensor sends a sound pulse and times the echo. Distance is about speed of sound times time, divided by two because the sound goes out and back. A soft curtain can give a weak echo. A very close object can be missed.</p>
- <h3>Topic: Filtering</h3>
- <p>Do not trust one sample. Take three readings and use the middle one, or average the last five. This is a simple filter. It stops one bad reading from turning the robot.</p>
- <h3>Topic: Calibration</h3>
- <p>Put a book at 20 cm. If the sensor says 26 cm, record the offset. Subtract that offset in code, or change the decision limit. Write the test in your notes.</p>
- <div class="note"><strong>Case.</strong> Readings 21, 19, 48. The 48 is a missed echo. The middle value is 21, so the robot keeps the 21 cm decision.</div>
- <p>Check: why divide the echo trip by two?</p>
- <input id="a2" placeholder="Type out and back">
- <button class="btn" onclick="check('a2','back','r2')">Check</button><p id="r2"></p>
- <button class="btn alt" onclick="mark('l2')">Mark lesson done</button>
-</article>
+<section id="lesson" class="screen">
+ <button class="btn alt" onclick="show('modules')">Back to modules</button>
+ <div class="card" id="lessonBody"></div>
+</section>
 
-<article class="card" id="l3">
- <h2>3. Control decisions</h2>
- <h3>Topic: Open loop and closed loop</h3>
- <p>Open loop plays a command and does not check the result. Closed loop measures the result and corrects. A timed turn is open loop. A turn-until-the-path-is-clear is closed loop.</p>
- <h3>Topic: Error</h3>
- <p>Error is the target minus the measurement. If the target distance is 25 cm and the sensor reads 15 cm, the error is 10 cm. The controller uses error to choose a command.</p>
- <h3>Topic: A simple proportional idea</h3>
- <p>A bigger error can make a stronger correction. If the arm is 40 degrees away from the goal, move faster. If it is 5 degrees away, move slower. That idea is called proportional control. Too strong a correction makes the joint overshoot and wobble.</p>
- <div class="code">error = target - measured
-if abs(error) < 3:
-    stop()
-elif error > 0:
-    move_positive()
-else:
-    move_negative()</div>
- <div class="note"><strong>Case.</strong> Line follower: left sensor sees the line and right does not. Error says drift right, so the right wheel slows. Both sensors see the line, error is near zero, both wheels match.</div>
- <p>Check: target minus measurement is called what?</p>
- <input id="a3" placeholder="Type error">
- <button class="btn" onclick="check('a3','error','r3')">Check</button><p id="r3"></p>
- <button class="btn alt" onclick="mark('l3')">Mark lesson done</button>
-</article>
-
-<article class="card" id="l4">
- <h2>4. Motion and mechanics</h2>
- <h3>Topic: Force, torque, and grip</h3>
- <p>Force pushes the robot. Torque turns a wheel or joint. Friction lets the tire push the floor. If torque is high and friction is low, the wheel spins and the robot does not move.</p>
- <h3>Topic: Differential drive</h3>
- <p>Two driven wheels can steer without a steering axle. Equal wheel speeds go straight. A faster left wheel turns the robot right. Opposite wheel directions spin in place. This is the standard base before legs.</p>
- <h3>Topic: Gearing</h3>
- <p>A small gear driving a large gear reduces speed and increases torque. Use that when a robot must start under load. Record the gear ratio in the build notes so later speed calculations match the real robot.</p>
- <h3>Topic: Stability</h3>
- <p>Keep the center of mass low and inside the wheelbase. A tall mast with a heavy part on top tips on a small bump. Move mass down before you add more speed.</p>
- <div class="warn">Test turns slowly. A fast spin can walk the robot off a table. Use a barrier or test on the floor.</div>
- <p>Check: two wheels steering by speed difference is called what drive?</p>
- <input id="a4" placeholder="Type differential">
- <button class="btn" onclick="check('a4','differential','r4')">Check</button><p id="r4"></p>
- <button class="btn alt" onclick="mark('l4')">Mark lesson done</button>
-</article>
-
-<article class="card" id="l5">
- <h2>5. Arms and position</h2>
- <h3>Topic: Joint space</h3>
- <p>An arm is described by joint angles. A two-servo arm has a base angle and an elbow angle. Moving in joint space means you command angles, not a point in the room.</p>
- <h3>Topic: A pose</h3>
- <p>A pose is a saved set of angles. Home might be 90 and 40. Reach might be 90 and 110. Wave might be 40 then 140 on the shoulder. Store poses in a table so a mission is a list of poses, not guesses.</p>
- <h3>Topic: One joint at a time</h3>
- <p>Advanced-looking motion is still built from safe steps. Move the elbow, wait until it arrives, then move the base. If both jump at once, you cannot tell which joint caused a problem.</p>
- <div class="code">poses = {
-  "home": (90, 40),
-  "reach": (90, 110),
-  "wave": (140, 40)
-}</div>
- <div class="note"><strong>Case.</strong> Pick mission: home, reach, close a gripper delay, home. Write the angles you measured, not angles you only imagined.</div>
- <p>Check: a saved set of joint angles is called a what?</p>
- <input id="a5" placeholder="Type pose">
- <button class="btn" onclick="check('a5','pose','r5')">Check</button><p id="r5"></p>
- <button class="btn alt" onclick="mark('l5')">Mark lesson done</button>
-</article>
-
-<article class="card" id="l6">
- <h2>6. Humanoid plan</h2>
- <h3>Topic: A humanoid is integrated systems</h3>
- <p>A humanoid robot joins structure, many actuators, balance sensing, power, and a program of small moves. It is not a costume on a wheeled robot. The wheeled robot and the arm are the training systems.</p>
- <h3>Topic: Behavior layers</h3>
- <p>Use layers. The lowest layer commands one joint. The next layer plays a pose. A higher layer plays a gesture such as wave. The top layer chooses a mission. When a layer fails, you test the layer under it.</p>
- <h3>Topic: Balance before steps</h3>
- <p>Standing fails if the center of mass leaves the feet. A tilt reading can trigger a recover pose. Walking is a sequence: shift weight, lift, place, shift back. Do this with support before a free step.</p>
- <h3>Topic: Engineering order</h3>
- <ol>
-  <li>Differential-drive robot with a tested avoid state.</li>
-  <li>Two-servo arm with named poses.</li>
-  <li>Wave gesture from those poses.</li>
-  <li>Supported stand and a tilt check.</li>
-  <li>One short step, then stop and review.</li>
- </ol>
- <div class="note"><strong>Case.</strong> Wave gesture calls shoulder poses 40, 140, 40 with waits. If the shoulder never reaches 140, fix that pose before you add a second arm.</div>
- <p>Check: what should you build before a free step?</p>
- <input id="a6" placeholder="Type balance or stand">
- <button class="btn" onclick="check('a6','stand','r6')">Check</button><p id="r6"></p>
- <button class="btn alt" onclick="mark('l6')">Mark lesson done</button>
-</article>
-
-<section class="card" id="lab">
- <h2>Advanced lab</h2>
- <div class="grid">
-  <div>
-   <h3>State from distance</h3>
-   <input id="dist" type="number" value="15">
-   <button class="btn" onclick="runState()">Run state</button>
-   <p id="stateOut">Waiting for a distance.</p>
-  </div>
-  <div>
-   <h3>Error from target 25 cm</h3>
-   <input id="measured" type="number" value="15">
-   <button class="btn" onclick="runError()">Compute error</button>
-   <p id="errorOut">Waiting for a measurement.</p>
-  </div>
+<section id="lab" class="screen">
+ <h1>Engineering lab</h1>
+ <div class="card">
+  <h2>1. State machine</h2>
+  <p>Under 20 cm = Avoid. 20 to 39 cm = Approach. 40 cm or more = Search.</p>
+  <input id="dist" type="number" value="15">
+  <button class="btn" onclick="runState()">Run</button>
+  <p id="stateOut"></p>
  </div>
- <h3>Progress</h3>
- <p id="progressLabel">0 of 6 lessons done</p>
- <div class="progress"><div id="bar"></div></div>
- <button class="btn alt" onclick="resetAll()">Reset</button>
+ <div class="card">
+  <h2>2. Control error</h2>
+  <p>Target distance is 25 cm. Error = target − measurement.</p>
+  <input id="measured" type="number" value="18">
+  <button class="btn" onclick="runError()">Compute</button>
+  <p id="errorOut"></p>
+ </div>
+ <div class="card">
+  <h2>3. Pose table</h2>
+  <p>Home 90/40, Reach 90/110, Wave 140/40. Choose a pose.</p>
+  <button class="btn" onclick="pose('home')">Home</button>
+  <button class="btn alt" onclick="pose('reach')">Reach</button>
+  <button class="btn alt" onclick="pose('wave')">Wave</button>
+  <p id="poseOut"></p>
+ </div>
 </section>
 
-<section class="card" id="quiz">
- <h2>Advanced quiz</h2>
- <p id="qCount"></p>
- <h3 id="qText"></h3>
- <div id="qChoices"></div>
- <p id="qFeedback"></p>
- <button class="btn" id="nextBtn" style="display:none" onclick="nextQ()">Next</button>
- <p id="scoreLine"></p>
+<section id="grades" class="screen">
+ <h1>Grades</h1>
+ <div class="card">
+  <h2 id="qTitle">Module quiz</h2>
+  <p id="qCount"></p>
+  <h3 id="qText"></h3>
+  <div id="qChoices"></div>
+  <p id="qFeedback"></p>
+  <button class="btn" id="nextBtn" style="display:none" onclick="nextQ()">Next</button>
+  <p id="scoreLine"></p>
+ </div>
+ <div class="card"><h2>Record</h2><p id="record">No quiz grade yet.</p></div>
 </section>
 
-<section class="card">
- <h2>About</h2>
- <p>RoboEngineer Advanced is a robotics engineering course app for systems, sensing, control, mechanics, arms, and humanoid planning.</p>
- <p>Created and owned by <strong>Abdulganiu Umar Akorede</strong>.</p>
+<section id="profile" class="screen">
+ <h1>Student profile</h1>
+ <div class="card">
+  <p>Name shown in the app. It stays on this phone only.</p>
+  <input id="name" placeholder="Your name">
+  <button class="btn" onclick="saveName()">Save name</button>
+  <p>Course owner: <strong>Abdulganiu Umar Akorede</strong></p>
+  <p>School app: RoboEngineer School · Robotics Engineering track</p>
+  <button class="btn alt" onclick="resetAll()">Reset course progress</button>
+ </div>
 </section>
 </main>
-<footer>© 2026 RoboEngineer Advanced · Abdulganiu Umar Akorede</footer>
+<nav class="bottom">
+ <button class="on" onclick="show('home',this)">Home</button>
+ <button onclick="show('modules',this)">Modules</button>
+ <button onclick="show('lab',this)">Lab</button>
+ <button onclick="show('grades',this)">Grades</button>
+ <button onclick="show('profile',this)">Profile</button>
+</nav>
 <script>
-function closeMenu(){document.getElementById('links').classList.remove('open')}
-const keys=['l1','l2','l3','l4','l5','l6'];
-let done=JSON.parse(localStorage.getItem('robo5')||'{}');
-function mark(id){done[id]=true;localStorage.setItem('robo5',JSON.stringify(done));paint()}
-function paint(){const n=keys.filter(k=>done[k]).length;document.getElementById('progressLabel').textContent=n+' of 6 advanced lessons done';document.getElementById('bar').style.width=Math.round(n/6*100)+'%'}
-function resetAll(){done={};localStorage.removeItem('robo5');paint()}
-function check(id,word,out){const v=document.getElementById(id).value.toLowerCase();document.getElementById(out).innerHTML=v.includes(word)?"<span class='ok'>Correct.</span>":"<span class='bad'>Check the topic wording and try again.</span>"}
+const modules=[
+ {id:'m1',title:'Robot Systems',level:'Advanced',topics:[
+  ['A robot is a system','Power, sensors, controller, and actuators must work together. Name each block before you build.'],
+  ['Control loop','Read, estimate, decide, command, then read again. Print the decision while you test.'],
+  ['States','Use one state at a time: Search, Approach, Avoid, Stop. A reading moves the robot to the next state.'],
+  ['Fail safe','If a reading is impossible or a stop button is pressed, enter Stop and cut motor commands.']
+ ]},
+ {id:'m2',title:'Sensing and Signals',level:'Advanced',topics:[
+  ['A reading is a number','Ask the unit, the range, and which values are impossible.'],
+  ['Ultrasonic method','Sound goes out and back, so travel time is divided by two to estimate distance.'],
+  ['Filtering','Take three readings and keep the middle one so one missed echo does not turn the robot.'],
+  ['Calibration','Place a target at a known distance, record the offset, and correct it in code.']
+ ]},
+ {id:'m3',title:'Control Decisions',level:'Advanced',topics:[
+  ['Open and closed loop','A timed turn does not check the result. A turn-until-clear does.'],
+  ['Error','Error = target − measurement. A 25 cm target and an 18 cm reading give an error of 7 cm.'],
+  ['Proportional idea','A larger error can make a stronger correction. Too strong a correction overshoots.'],
+  ['Line case','If only one side sees the line, slow the opposite wheel until the error is small.']
+ ]},
+ {id:'m4',title:'Motion and Mechanics',level:'Advanced',topics:[
+  ['Torque and grip','High torque with low friction spins the wheel in place.'],
+  ['Differential drive','Equal wheel speeds go straight. A faster left wheel turns the robot right.'],
+  ['Gears','A small gear driving a large gear trades speed for torque.'],
+  ['Stability','Keep mass low and inside the wheelbase before you add speed.']
+ ]},
+ {id:'m5',title:'Arms and Poses',level:'Advanced',topics:[
+  ['Joint space','Command angles, not a guessed point in the room.'],
+  ['Pose table','Home, reach, and wave are saved angle pairs.'],
+  ['One joint at a time','Move, wait, then move the next joint so faults are easy to find.'],
+  ['Mission list','A pick mission is home, reach, pause, home. Write measured angles.']
+ ]},
+ {id:'m6',title:'Humanoid Plan',level:'Advanced',topics:[
+  ['Layers','Joint command, pose, gesture, then mission. Test the lower layer first.'],
+  ['Balance','If the center of mass leaves the feet, the robot tips.'],
+  ['Wave first','Shoulder 40, wait, 140, wait, 40. A wave is a real result.'],
+  ['Build order','Avoid robot, arm poses, wave, supported stand, then one short step.']
+ ]}
+];
+const poses={home:'Base 90°, elbow 40°',reach:'Base 90°, elbow 110°',wave:'Base 140°, elbow 40°'};
+let done=JSON.parse(localStorage.getItem('school-done')||'{}');
+let grade=localStorage.getItem('school-grade')||'';
+let current=0;
+function show(id,btn){
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+ document.getElementById(id).classList.add('on');
+ if(btn){document.querySelectorAll('nav.bottom button').forEach(b=>b.classList.remove('on'));btn.classList.add('on')}
+}
+function paint(){
+ const n=modules.filter(m=>done[m.id]).length;
+ document.getElementById('doneCount').textContent=n+'/6';
+ document.getElementById('xp').textContent=n*20;
+ document.getElementById('grade').textContent=grade||'—';
+ document.getElementById('homeBar').style.width=Math.round(n/6*100)+'%';
+ const next=modules.find(m=>!done[m.id]);
+ document.getElementById('nextText').textContent=next?('Next module: '+next.title):'All modules complete.';
+ document.getElementById('who').textContent=localStorage.getItem('school-name')||'Student';
+ document.getElementById('name').value=localStorage.getItem('school-name')||'';
+ document.getElementById('record').textContent=grade?('Best quiz grade: '+grade):'No quiz grade yet.';
+ document.getElementById('modList').innerHTML=modules.map((m,i)=>`<div class="mod"><div><b>${m.title}</b><p>${m.level}${done[m.id]?' · done':''}</p></div><button class="btn" onclick="openLesson(${i})">Open</button></div>`).join('');
+}
+function openNext(){const i=modules.findIndex(m=>!done[m.id]);openLesson(i<0?0:i)}
+function openLesson(i){
+ current=i; const m=modules[i];
+ document.getElementById('lessonBody').innerHTML=`<p>${m.level} module</p><h2>${m.title}</h2>`+m.topics.map((t,n)=>`<h3>Topic ${n+1}: ${t[0]}</h3><p>${t[1]}</p>`).join('')+`<div class="note"><b>Lab link.</b> After this module, open the Lab tab and try the matching tool.</div><div class="warn"><b>Class rule.</b> Change one thing, test, and write the result.</div><button class="btn" onclick="mark('${m.id}')">${done[m.id]?'Completed':'Mark module done'}</button>`;
+ show('lesson');
+}
+function mark(id){done[id]=true;localStorage.setItem('school-done',JSON.stringify(done));paint();openLesson(current)}
+function saveName(){localStorage.setItem('school-name',document.getElementById('name').value||'Student');paint()}
+function resetAll(){done={};grade='';localStorage.removeItem('school-done');localStorage.removeItem('school-grade');paint()}
 function runState(){const d=Number(document.getElementById('dist').value);const o=document.getElementById('stateOut');if(Number.isNaN(d)||d<0){o.textContent='Type 0 or more.';return}let s='Search';if(d<20)s='Avoid';else if(d<40)s='Approach';o.innerHTML='State: <span class="ok">'+s+'</span>'}
-function runError(){const m=Number(document.getElementById('measured').value);const o=document.getElementById('errorOut');if(Number.isNaN(m)){o.textContent='Type a number.';return}const e=25-m;o.innerHTML='Error = '+e+' cm. '+(Math.abs(e)<3?'<span class="ok">Close enough to stop.</span>':'<span class="bad">Correction still needed.</span>')}
+function runError(){const m=Number(document.getElementById('measured').value);const e=25-m;document.getElementById('errorOut').innerHTML='Error = '+e+' cm. '+(Math.abs(e)<3?'<span class="ok">Within stop band.</span>':'<span class="bad">Correction needed.</span>')}
+function pose(name){document.getElementById('poseOut').innerHTML='<span class="ok">'+name+'</span> · '+poses[name]}
 const qs=[
- {q:'A robot should occupy how many behavior states at once?',c:['One','Five','As many as possible'],a:0,w:'One state at a time keeps the behavior clear.'},
- {q:'Why can one ultrasonic reading be a bad decision?',c:['It can be noise or a missed echo','Sensors are decoration','Wheels change the number'],a:0,w:'Filter or take a middle value before you turn.'},
- {q:'Target minus measurement is called?',c:['Error','Gear ratio','Chassis'],a:0,w:'Error tells the controller how far it is from the goal.'},
- {q:'Two wheels steered by different speeds use?',c:['Differential drive','A rocket','Only a caster'],a:0,w:'Differential drive steers by wheel-speed difference.'},
- {q:'What comes before a free walking step?',c:['A supported stand and balance check','A costume','Maximum speed'],a:0,w:'Balance and support come before a free step.'}
+ {q:'How many behavior states should run at once?',c:['One','All of them','None'],a:0,w:'One state keeps the behavior clear.'},
+ {q:'Why filter an ultrasonic reading?',c:['A single echo can be wrong','To make it slower only','Wheels require it'],a:0,w:'Use a middle value so one bad sample does not turn the robot.'},
+ {q:'Error equals?',c:['Target minus measurement','Wheel size','Battery color'],a:0,w:'Error tells you how far you are from the goal.'},
+ {q:'A faster left wheel turns the robot?',c:['Right','Up','Backward only'],a:0,w:'Differential drive turns toward the slower wheel.'},
+ {q:'What comes before a free step?',c:['Supported stand and balance','A costume','Top speed'],a:0,w:'Balance comes before a free step.'}
 ];
 let qi=0,locked=false,score=0,asked=0;
-function showQ(){const item=qs[qi];locked=false;document.getElementById('qCount').textContent='Question '+(qi+1)+' of '+qs.length;document.getElementById('qText').textContent=item.q;document.getElementById('qFeedback').textContent='';document.getElementById('nextBtn').style.display='none';document.getElementById('qChoices').innerHTML=item.c.map((c,i)=>'<button class="btn alt" style="display:block;width:100%;text-align:left" onclick="pick('+i+')">'+c+'</button>').join('');document.getElementById('scoreLine').textContent='Score: '+score+' of '+asked}
-function pick(i){if(locked)return;locked=true;asked++;const item=qs[qi];const ok=i===item.a;if(ok)score++;document.getElementById('qFeedback').innerHTML=(ok?'<span class="ok">Correct.</span> ':'<span class="bad">Not quite.</span> ')+item.w;document.getElementById('nextBtn').style.display='inline-block';document.getElementById('nextBtn').textContent=qi===qs.length-1?'Restart':'Next';document.getElementById('scoreLine').textContent='Score: '+score+' of '+asked}
-function nextQ(){if(qi===qs.length-1){qi=0;score=0;asked=0}else qi++;showQ()}
+function showQ(){const item=qs[qi];locked=false;document.getElementById('qCount').textContent='Question '+(qi+1)+' of '+qs.length;document.getElementById('qText').textContent=item.q;document.getElementById('qFeedback').textContent='';document.getElementById('nextBtn').style.display='none';document.getElementById('qChoices').innerHTML=item.c.map((c,i)=>`<button class="btn alt" onclick="pick(${i})">${c}</button>`).join('');document.getElementById('scoreLine').textContent='Score: '+score+' / '+asked}
+function pick(i){if(locked)return;locked=true;asked++;if(i===qs[qi].a)score++;document.getElementById('qFeedback').innerHTML=(i===qs[qi].a?'<span class="ok">Correct.</span> ':'<span class="bad">Not quite.</span> ')+qs[qi].w;document.getElementById('nextBtn').style.display='inline-block';document.getElementById('nextBtn').textContent=qi===qs.length-1?'Finish grade':'Next';document.getElementById('scoreLine').textContent='Score: '+score+' / '+asked}
+function nextQ(){if(qi===qs.length-1){grade=Math.round(score/qs.length*100)+'%';localStorage.setItem('school-grade',grade);qi=0;score=0;asked=0;paint()}else qi++;showQ()}
 paint();showQ();
 </script>
 </body>
